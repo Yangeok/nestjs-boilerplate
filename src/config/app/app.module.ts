@@ -8,6 +8,7 @@ import configuration from './configuration';
 @Module({
   imports: [
     ConfigModule.forRoot({
+      envFilePath: [`.env.${process.env.NODE_ENV}`],
       load: [configuration],
       validationSchema: Joi.object({
         APP_NAME: Joi.string(),

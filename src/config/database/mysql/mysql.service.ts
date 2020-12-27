@@ -22,7 +22,7 @@ export class MysqlService {
     const env = process.env;
     const baseDir = path.join(__dirname, '../../../');
     const entitiesPath = path.join(baseDir, env.DB_ENTITIES);
-    const migrationPath = path.join(baseDir, env.DB_MIGRATIONS);
+    const migrationsPath = path.join(baseDir, env.DB_MIGRATIONS);
 
     const type: any = this.envConfig.DB_TYPE;
     return {
@@ -35,10 +35,10 @@ export class MysqlService {
       synchronize: Boolean(this.envConfig.DB_SYNCHRONIZE),
       logging: Boolean(this.envConfig.DB_LOGGING),
       entities: [entitiesPath],
-      migrations: [migrationPath],
+      migrations: [migrationsPath],
       cli: {
-        entitiesDir: 'src/entity',
-        migrationsDir: 'src/migration',
+        entitiesDir: entitiesPath,
+        migrationsDir: migrationsPath,
       },
     };
   }
